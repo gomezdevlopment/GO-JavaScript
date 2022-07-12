@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer> </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Play Go</h1>
+    <div class="board" id="board">
+        <div id="background"></div>
+        <div class="intersections">
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+        </div>
+
+        <div class="squares" id="squares">
+            <div class="cell" data-cell id="0"></div>
+            <div class="cell" data-cell id="1"></div>
+            <div class="cell" data-cell id="2"></div>
+            <div class="cell" data-cell id="3"></div>
+            <div class="cell" data-cell id="4"></div>
+            <div class="cell" data-cell id="5"></div>
+            <div class="cell" data-cell id="6"></div>
+            <div class="cell" data-cell id="7"></div>
+            <div class="cell" data-cell id="8"></div>
+
+            <div class="cell" data-cell id="18"></div>
+            <div class="cell" data-cell id="19"></div>
+            <div class="cell" data-cell id="20"></div>
+            <div class="cell" data-cell id="21"></div>
+            <div class="cell" data-cell id="22"></div>
+            <div class="cell" data-cell id="23"></div>
+            <div class="cell" data-cell id="24"></div>
+            <div class="cell" data-cell id="25"></div>
+            <div class="cell" data-cell id="26"></div>
+
+            <div class="cell" data-cell id="36"></div>
+            <div class="cell" data-cell id="37"></div>
+            <div class="cell" data-cell id="38"></div>
+            <div class="cell" data-cell id="39"></div>
+            <div class="cell" data-cell id="40"></div>
+            <div class="cell" data-cell id="41"></div>
+            <div class="cell" data-cell id="42"></div>
+            <div class="cell" data-cell id="43"></div>
+            <div class="cell" data-cell id="44"></div>
+
+            <div class="cell" data-cell id="54"></div>
+            <div class="cell" data-cell id="55"></div>
+            <div class="cell" data-cell id="56"></div>
+            <div class="cell" data-cell id="57"></div>
+            <div class="cell" data-cell id="58"></div>
+            <div class="cell" data-cell id="59"></div>
+            <div class="cell" data-cell id="60"></div>
+            <div class="cell" data-cell id="61"></div>
+            <div class="cell" data-cell id="62"></div>
+
+            <div class="cell" data-cell id="72"></div>
+            <div class="cell" data-cell id="73"></div>
+            <div class="cell" data-cell id="74"></div>
+            <div class="cell" data-cell id="75"></div>
+            <div class="cell" data-cell id="76"></div>
+            <div class="cell" data-cell id="77"></div>
+            <div class="cell" data-cell id="78"></div>
+            <div class="cell" data-cell id="79"></div>
+            <div class="cell" data-cell id="80"></div>
+
+            <div class="cell" data-cell id="90"></div>
+            <div class="cell" data-cell id="91"></div>
+            <div class="cell" data-cell id="92"></div>
+            <div class="cell" data-cell id="93"></div>
+            <div class="cell" data-cell id="94"></div>
+            <div class="cell" data-cell id="95"></div>
+            <div class="cell" data-cell id="96"></div>
+            <div class="cell" data-cell id="97"></div>
+            <div class="cell" data-cell id="98"></div>
+
+            <div class="cell" data-cell id="108"></div>
+            <div class="cell" data-cell id="109"></div>
+            <div class="cell" data-cell id="110"></div>
+            <div class="cell" data-cell id="111"></div>
+            <div class="cell" data-cell id="112"></div>
+            <div class="cell" data-cell id="113"></div>
+            <div class="cell" data-cell id="114"></div>
+            <div class="cell" data-cell id="115"></div>
+            <div class="cell" data-cell id="116"></div>
+
+            <div class="cell" data-cell id="126"></div>
+            <div class="cell" data-cell id="127"></div>
+            <div class="cell" data-cell id="128"></div>
+            <div class="cell" data-cell id="129"></div>
+            <div class="cell" data-cell id="130"></div>
+            <div class="cell" data-cell id="131"></div>
+            <div class="cell" data-cell id="132"></div>
+            <div class="cell" data-cell id="133"></div>
+            <div class="cell" data-cell id="134"></div>
+
+            <div class="cell" data-cell id="144"></div>
+            <div class="cell" data-cell id="145"></div>
+            <div class="cell" data-cell id="146"></div>
+            <div class="cell" data-cell id="147"></div>
+            <div class="cell" data-cell id="148"></div>
+            <div class="cell" data-cell id="149"></div>
+            <div class="cell" data-cell id="150"></div>
+            <div class="cell" data-cell id="151"></div>
+            <div class="cell" data-cell id="152"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

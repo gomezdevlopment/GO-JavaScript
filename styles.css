@@ -1,0 +1,93 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --cell-size: 100px;
+    --stone-size: calc(var(--cell-size) *.95);
+    --background-size: 1000px;
+}
+
+body {
+    margin: 0;
+}
+
+#background {
+    width: var(--background-size);
+    height: var(--background-size);
+    display: flexbox;
+    background-color: beige;
+    outline: 2px solid black;
+    position: absolute;
+}
+
+.board {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.squares {
+    width: 100vw;
+    height: 100vw;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(9, auto);
+    position: absolute;
+}
+
+.intersections {
+    width: 100vw;
+    height: 100vw;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(8, auto);
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.point {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background-color: transparent;
+    border: 1px solid black;
+    outline: 2px solid black;
+    position: relative;
+}
+
+.squares.black .cell:not(.black):not(.white):hover,
+.squares.white .cell:not(.black):not(.white):hover {
+    opacity: .5;
+}
+
+
+.cell.black,
+.squares.black .cell:not(.black):not(.white):hover {
+    width: var(--stone-size);
+    height: var(--stone-size);
+    background-color: black;
+    border-radius: 50%;
+}
+
+.cell.white,
+.squares.white .cell:not(.black):not(.white):hover {
+    width: var(--stone-size);
+    height: var(--stone-size);
+    background-color: white;
+    border-radius: 50%;
+}
