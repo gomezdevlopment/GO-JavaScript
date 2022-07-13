@@ -6,6 +6,9 @@ const L = 'l'
 const audio = new Audio();
 audio.src = "audio/click.mp3";
 
+const errorAudio = new Audio();
+errorAudio.src = "audio/error.mp3"
+
 let previousStone
 
 let boardState = [
@@ -46,44 +49,62 @@ function handleClick(e) {
     const intersection = e.target
     const currentClass = blackTurn ? BLACK : WHITE
     placeStone(intersection, currentClass)
-    audio.play()
-    passTurn()
-    setSquaresHoverClass()
 }
 
 function placeStone(intersection, currentClass) {
-    if(previousStone != null){
+    if (previousStone != null) {
         previousStone.classList.remove(PREVIOUS)
     }
 
     previousStone = intersection
     intersection.classList.add(currentClass)
     intersection.classList.add(PREVIOUS)
+    intersection.removeEventListener('click', handleClick)
     const stonePosition = Number(intersection.id)
     boardState[stonePosition] = currentClass
     if (blackTurn) {
         blackStones.push(intersection)
         checkForCaptures(whiteStones, WHITE)
-        capturedStones.forEach(stone => {
-            stone.classList.remove(WHITE)
-            boardState[Number(stone.id)] = L
-            const stoneIndex = whiteStones.indexOf(stone)
-            whiteStones.splice(stoneIndex, 1)
-        })
+        removeCapturedStones(WHITE)
+        checkForCaptures(blackStones, BLACK)
+        if (capturedStones.length > 0) {
+            removeCapturedStones(BLACK)
+            errorAudio.play()
+        } else {
+            passTurn()
+        }
     } else {
         whiteStones.push(intersection)
         checkForCaptures(blackStones, BLACK)
-        capturedStones.forEach(stone => {
-            stone.classList.remove(BLACK)
-            boardState[Number(stone.id)] = L
-            const stoneIndex = blackStones.indexOf(stone)
-            blackStones.splice(stoneIndex, 1)
-        })
+        removeCapturedStones(BLACK)
+        checkForCaptures(whiteStones, WHITE)
+        if (capturedStones.length > 0) {
+            removeCapturedStones(WHITE)
+            errorAudio.play()
+        } else {
+            passTurn()
+        }
     }
+}
+
+function removeCapturedStones(color) {
+    capturedStones.forEach(stone => {
+        stone.classList.remove(color)
+        boardState[Number(stone.id)] = L
+        const stoneIndex = whiteStones.indexOf(stone)
+        if (color === WHITE) {
+            whiteStones.splice(stoneIndex, 1)
+        } else {
+            blackStones.splice(stoneIndex, 1)
+        }
+        stone.addEventListener('click', handleClick)
+    })
 }
 
 function passTurn() {
     blackTurn = !blackTurn
+    setSquaresHoverClass()
+    audio.play()
 }
 
 let groupedStones = []
