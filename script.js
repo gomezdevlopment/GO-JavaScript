@@ -52,13 +52,7 @@ function handleClick(e) {
 }
 
 function placeStone(intersection, currentClass) {
-    if (previousStone != null) {
-        previousStone.classList.remove(PREVIOUS)
-    }
-
-    previousStone = intersection
     intersection.classList.add(currentClass)
-    intersection.classList.add(PREVIOUS)
     intersection.removeEventListener('click', handleClick)
     const stonePosition = Number(intersection.id)
     boardState[stonePosition] = currentClass
@@ -71,7 +65,7 @@ function placeStone(intersection, currentClass) {
             removeCapturedStones(BLACK)
             errorAudio.play()
         } else {
-            passTurn()
+            passTurn(intersection)
         }
     } else {
         whiteStones.push(intersection)
@@ -82,7 +76,7 @@ function placeStone(intersection, currentClass) {
             removeCapturedStones(WHITE)
             errorAudio.play()
         } else {
-            passTurn()
+            passTurn(intersection)
         }
     }
 }
@@ -101,10 +95,15 @@ function removeCapturedStones(color) {
     })
 }
 
-function passTurn() {
+function passTurn(placedStone) {
     blackTurn = !blackTurn
     setSquaresHoverClass()
     audio.play()
+    if (previousStone != null) {
+        previousStone.classList.remove(PREVIOUS)
+    }
+    previousStone = placedStone
+    placedStone.classList.add(PREVIOUS)
 }
 
 let groupedStones = []
