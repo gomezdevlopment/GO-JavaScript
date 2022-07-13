@@ -2,6 +2,7 @@ const BLACK = 'black'
 const WHITE = 'white'
 const PREVIOUS = 'previous'
 const L = 'l'
+const O = 'o'
 
 const audio = new Audio();
 audio.src = "audio/click.mp3";
@@ -12,15 +13,15 @@ errorAudio.src = "audio/error.mp3"
 let previousStone
 
 let boardState = [
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
-    L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+    L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
 ]
 
 let blackStones = []

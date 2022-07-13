@@ -92,8 +92,9 @@ body {
 .squares.black .cell:not(.black):not(.white):hover {
     width: var(--stone-size);
     height: var(--stone-size);
+    background-color: transparent;
     background-size: 100%;
-    background-image: url('/images/black_stone.svg');
+    background-image: url('images/black_stone.svg');
 }
 
 .cell.white,
@@ -102,13 +103,13 @@ body {
     height: var(--stone-size);
     background-color: transparent;
     background-size: 100%;
-    background-image: url('/images/white_stone.svg');
+    background-image: url('images/white_stone.svg');
 }
 
 .cell.white.previous {
-    background-image: url('/images/white_stone_previous.svg');
+    background-image: url('images/white_stone_previous.svg');
 }
 
 .cell.black.previous {
-    background-image: url('/images/black_stone_previous.svg');
+    background-image: url('images/black_stone_previous.svg');
 }
