@@ -1,9 +1,12 @@
 const BLACK = 'black'
 const WHITE = 'white'
+const PREVIOUS = 'previous'
 const L = 'l'
 
 const audio = new Audio();
 audio.src = "audio/click.mp3";
+
+let previousStone
 
 let boardState = [
     L, L, L, L, L, L, L, L, L, 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o',
@@ -49,7 +52,13 @@ function handleClick(e) {
 }
 
 function placeStone(intersection, currentClass) {
+    if(previousStone != null){
+        previousStone.classList.remove(PREVIOUS)
+    }
+
+    previousStone = intersection
     intersection.classList.add(currentClass)
+    intersection.classList.add(PREVIOUS)
     const stonePosition = Number(intersection.id)
     boardState[stonePosition] = currentClass
     if (blackTurn) {

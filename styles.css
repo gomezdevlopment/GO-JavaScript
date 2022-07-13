@@ -5,9 +5,11 @@
 }
 
 :root {
-    --cell-size: 100px;
+    --board-size: 700px;
+    --cell-size: calc(var(--board-size) / 9);;
     --stone-size: calc(var(--cell-size) *.95);
-    --background-size: 1000px;
+    --star-point-size: calc(var(--cell-size) *.2);
+    --background-size:  800px;
 }
 
 body {
@@ -24,16 +26,19 @@ body {
 }
 
 .board {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content:center;
     align-items: center;
-    position: relative;
+    position: absolute;
+    margin: auto;
 }
 
 .squares {
-    width: 100vw;
-    height: 100vw;
+    width: var(--board-size);
+    height: var(--board-size);
     display: grid;
     justify-content: center;
     align-content: center;
@@ -44,8 +49,8 @@ body {
 }
 
 .intersections {
-    width: 100vw;
-    height: 100vw;
+    width: var(--board-size);
+    height: var(--board-size);
     display: grid;
     justify-content: center;
     align-content: center;
@@ -75,6 +80,13 @@ body {
     opacity: .5;
 }
 
+.cell.star-point {
+    width: var(--star-point-size);
+    height: var(--star-point-size);
+    border-radius: 50%;
+    background-color: black;
+}
+
 
 .cell.black,
 .squares.black .cell:not(.black):not(.white):hover {
@@ -86,8 +98,17 @@ body {
 
 .cell.white,
 .squares.white .cell:not(.black):not(.white):hover {
-    width: 100px;
-    height: 100px;
-    background-size: 100px;
+    width: var(--stone-size);
+    height: var(--stone-size);
+    background-color: transparent;
+    background-size: 100%;
     background-image: url('/images/white_stone.svg');
+}
+
+.cell.white.previous {
+    background-image: url('/images/white_stone_previous.svg');
+}
+
+.cell.black.previous {
+    background-image: url('/images/black_stone_previous.svg');
 }
