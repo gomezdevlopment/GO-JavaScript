@@ -12,7 +12,7 @@ errorAudio.src = "audio/error.mp3"
 
 let previousStone
 
-let boardState = [
+const boardState = [
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
@@ -24,8 +24,10 @@ let boardState = [
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
 ]
 
-let blackStones = []
-let whiteStones = []
+let previousBoardStates = []
+
+const blackStones = []
+const whiteStones = []
 
 const squares = document.getElementById('squares')
 let intersections = squares.children
@@ -58,42 +60,63 @@ function placeStone(intersection, currentClass) {
     const stonePosition = Number(intersection.id)
     boardState[stonePosition] = currentClass
     if (blackTurn) {
-        blackStones.push(intersection)
-        checkForCaptures(whiteStones, WHITE)
-        removeCapturedStones(WHITE)
-        checkForCaptures(blackStones, BLACK)
-        if (capturedStones.length > 0) {
-            removeCapturedStones(BLACK)
-            errorAudio.play()
-        } else {
-            passTurn(intersection)
-        }
+        checkIfLegalMove(blackStones, whiteStones, intersection, WHITE, BLACK, stonePosition)
     } else {
-        whiteStones.push(intersection)
-        checkForCaptures(blackStones, BLACK)
-        removeCapturedStones(BLACK)
-        checkForCaptures(whiteStones, WHITE)
+        checkIfLegalMove(whiteStones, blackStones, intersection, BLACK, WHITE, stonePosition)
+    }
+}
+
+function checkIfLegalMove(myStones, enemyStones, stone, enemyColor, myColor, stonePosition) {
+    myStones.push(stone)
+    checkForCaptures(enemyStones, enemyColor)
+    removeCapturedStones(enemyColor, enemyStones)
+    const currentBoardState = boardState.toString()
+    const ko = previousBoardStates.includes(currentBoardState)
+
+    if (ko) {
+        console.log("ko")
+        replaceCapturedStones(enemyColor)
+        errorAudio.play()
+        removePlacedStone(stone, stonePosition, myStones, myColor)
+    } else {
+        console.log("not ko")
+        checkForCaptures(myStones, myColor)
         if (capturedStones.length > 0) {
-            removeCapturedStones(WHITE)
+            removePlacedStone(stone, stonePosition, myStones, myColor)
             errorAudio.play()
         } else {
-            passTurn(intersection)
+            passTurn(stone)
         }
     }
 }
 
-function removeCapturedStones(color) {
+function removeCapturedStones(color, stones) {
     capturedStones.forEach(stone => {
         stone.classList.remove(color)
         boardState[Number(stone.id)] = L
-        if (color === WHITE) {
-            const stoneIndex = whiteStones.indexOf(stone)
-            whiteStones.splice(stoneIndex, 1)
-        } else {
-            const stoneIndex = blackStones.indexOf(stone)
-            blackStones.splice(stoneIndex, 1)
-        }
+        const stoneIndex = stones.indexOf(stone)
+        stones.splice(stoneIndex, 1)
         stone.addEventListener('click', handleClick)
+    })
+}
+
+function removePlacedStone(placedStone, stonePosition, stones, color) {
+    boardState[stonePosition] = L
+    placedStone.addEventListener('click', handleClick)
+    placedStone.classList.remove(color)
+    stones.splice(stones.indexOf(placedStone), 1)
+}
+
+function replaceCapturedStones(color) {
+    capturedStones.forEach(stone => {
+        stone.classList.add(color)
+        boardState[Number(stone.id)] = color
+        if (color === WHITE) {
+            whiteStones.push(stone)
+        } else {
+            blackStones.push(stone)
+        }
+        stone.removeEventListener('click', handleClick)
     })
 }
 
@@ -106,6 +129,8 @@ function passTurn(placedStone) {
     }
     previousStone = placedStone
     placedStone.classList.add(PREVIOUS)
+    const currentBoardState = boardState.toString()
+    previousBoardStates.push(currentBoardState)
 }
 
 let groupedStones = []

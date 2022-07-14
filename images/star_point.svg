@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="star_point.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#d0d868"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="0.9058367"
+     inkscape:cx="417.84573"
+     inkscape:cy="331.18552"
+     inkscape:window-width="1696"
+     inkscape:window-height="994"
+     inkscape:window-x="199"
+     inkscape:window-y="47"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11978">
+      <circle
+         style="fill:#808080;fill-rule:evenodd;stroke-width:0.999999"
+         id="circle11980"
+         cx="242.83014"
+         cy="251.60628"
+         r="168.35263" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11982">
+      <circle
+         style="fill:#808080;fill-rule:evenodd;stroke-width:0.999999"
+         id="circle11984"
+         cx="246.7332"
+         cy="250.04504"
+         r="168.35263" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11986">
+      <circle
+         style="fill:#808080;fill-rule:evenodd;stroke-width:0.999999"
+         id="circle11988"
+         cx="246.7332"
+         cy="250.04504"
+         r="168.35263" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11990">
+      <circle
+         style="fill:#808080;fill-rule:evenodd;stroke-width:0.264583"
+         id="circle11992"
+         cx="65.281494"
+         cy="66.157753"
+         r="44.543301" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath11994">
+      <circle
+         style="fill:#808080;fill-rule:evenodd;stroke-width:0.264583"
+         id="circle11996"
+         cx="65.281494"
+         cy="66.157753"
+         r="44.543301" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="+" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#000000;fill-rule:evenodd;stroke-width:0.28656"
+       id="path1377"
+       cx="66.145836"
+       cy="66.145836"
+       r="65.484375" />
+  </g>
+</svg>

@@ -6,10 +6,11 @@
 
 :root {
     --board-size: 700px;
-    --cell-size: calc(var(--board-size) / 9);;
+    --cell-size: calc(var(--board-size) / 9);
+    ;
     --stone-size: calc(var(--cell-size) *.95);
     --star-point-size: calc(var(--cell-size) *.2);
-    --background-size:  800px;
+    --background-size: 800px;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     position: absolute;
     margin: auto;
@@ -81,12 +82,19 @@ body {
 }
 
 .cell.star-point {
-    width: var(--star-point-size);
-    height: var(--star-point-size);
-    border-radius: 50%;
-    background-color: black;
+    background-size: 20%;
+    background-image: url('/GO-JavaScript/images/star_point.svg');
+    /* background-image: url('/images/star_point.svg'); */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
+.cell.black, 
+.cell.white {
+    width: var(--stone-size);
+    height: var(--stone-size);
+    background-size: 100%;
+}
 
 .cell.black,
 .squares.black .cell:not(.black):not(.white):hover {
@@ -94,21 +102,22 @@ body {
     height: var(--stone-size);
     background-size: 100%;
     background-image: url('/GO-JavaScript/images/black_stone.svg');
+    /* background-image: url('/images/black_stone.svg'); */
 }
 
 .cell.white,
 .squares.white .cell:not(.black):not(.white):hover {
-    width: var(--stone-size);
-    height: var(--stone-size);
-    background-color: transparent;
     background-size: 100%;
     background-image: url('/GO-JavaScript/images/white_stone.svg');
+    /* background-image: url('/images/white_stone.svg'); */
 }
 
 .cell.white.previous {
     background-image: url('/GO-JavaScript/images/white_stone_previous.svg');
+    /* background-image: url('/images/white_stone_previous.svg'); */
 }
 
 .cell.black.previous {
     background-image: url('/GO-JavaScript/images/black_stone_previous.svg');
+    /* background-image: url('/images/black_stone_previous.svg'); */
 }
