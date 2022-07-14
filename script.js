@@ -86,10 +86,11 @@ function removeCapturedStones(color) {
     capturedStones.forEach(stone => {
         stone.classList.remove(color)
         boardState[Number(stone.id)] = L
-        const stoneIndex = whiteStones.indexOf(stone)
         if (color === WHITE) {
+            const stoneIndex = whiteStones.indexOf(stone)
             whiteStones.splice(stoneIndex, 1)
         } else {
+            const stoneIndex = blackStones.indexOf(stone)
             blackStones.splice(stoneIndex, 1)
         }
         stone.addEventListener('click', handleClick)
