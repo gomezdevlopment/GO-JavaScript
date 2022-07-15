@@ -11,8 +11,7 @@ const errorAudio = new Audio();
 errorAudio.src = "audio/error.mp3"
 
 let previousStone
-
-const boardState = [
+let boardState = [
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
@@ -23,16 +22,25 @@ const boardState = [
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
     L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
 ]
-
 let previousBoardStates = []
-
-const blackStones = []
-const whiteStones = []
+let blackStones = []
+let whiteStones = []
 
 const squares = document.getElementById('squares')
 let intersections = squares.children
 const mapOfIntersections = new Map();
 let blackTurn
+
+let groupedStones = []
+let groupedStonesHaveLiberty = false
+let checkedStones = []
+let capturedStones = []
+
+let passCount = 0
+
+
+const newGameButton = document.getElementById('new-game-button')
+const passButton = document.getElementById('pass-button')
 
 startGame()
 
@@ -46,12 +54,63 @@ function startGame() {
     }
 
     setSquaresHoverClass()
+
+    newGameButton.addEventListener('click', newGame)
+    passButton.addEventListener('click', pass)
 }
 
 function handleClick(e) {
     const intersection = e.target
     const currentClass = blackTurn ? BLACK : WHITE
     placeStone(intersection, currentClass)
+}
+
+function pass(e){
+    blackTurn = !blackTurn
+    setSquaresHoverClass()
+    passCount = passCount + 1
+    
+    if(passCount == 2){
+        console.log("Game Over")
+    }
+}
+
+function newGame(e) {
+    passCount = 0
+    console.log("New Game")
+    blackTurn = true
+    setSquaresHoverClass()
+    blackStones.forEach( stone => {
+        stone.classList.remove(BLACK)
+        stone.addEventListener('click', handleClick)
+    })
+
+    whiteStones.forEach( stone => {
+        stone.classList.remove(WHITE)
+        stone.addEventListener('click', handleClick)
+    })
+    
+    // let previousStone
+    boardState = [
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O,
+        L, L, L, L, L, L, L, L, L, O, O, O, O, O, O, O, O, O
+    ]
+
+    previousBoardStates = []
+    blackStones = []
+    whiteStones = []
+    groupedStones = []
+    groupedStonesHaveLiberty = false
+    checkedStones = []
+    capturedStones = []
+
 }
 
 function placeStone(intersection, currentClass) {
@@ -121,6 +180,7 @@ function replaceCapturedStones(color) {
 }
 
 function passTurn(placedStone) {
+    passCount = 0
     blackTurn = !blackTurn
     setSquaresHoverClass()
     audio.play()
@@ -132,11 +192,6 @@ function passTurn(placedStone) {
     const currentBoardState = boardState.toString()
     previousBoardStates.push(currentBoardState)
 }
-
-let groupedStones = []
-let groupedStonesHaveLiberty = false
-let checkedStones = []
-let capturedStones = []
 
 function checkForCaptures(stonesOnBoard, friendlyColor) {
     capturedStones = []
